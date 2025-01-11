@@ -46,14 +46,6 @@ class Node:
 
 
 def feasibility_check(problem_statement, chain_of_thought, model_name="phi3"):
-    """
-    A "breach" check to see if the chain-of-thought is obviously off-track.
-    Returns True if feasible, False if infeasible.
-
-    This version prints debug info and does a looser parse:
-    We look for the substring "feasible" or "infeasible" in the model's response,
-    ignoring case and punctuation.
-    """
     cot_text = "\n".join(chain_of_thought)
 
     arbiter_system_prompt = (
@@ -63,14 +55,14 @@ def feasibility_check(problem_statement, chain_of_thought, model_name="phi3"):
         "If the chain-of-thought is clearly impossible or contradictory, say 'Infeasible'."
     )
     meta_prompt = f"""Problem Statement:
-{problem_statement}
+    {problem_statement}
 
-Partial Chain of Thought:
-{cot_text}
+    Partial Chain of Thought:
+    {cot_text}
 
-Is this chain-of-thought still logically feasible for solving the problem?
-Answer "Feasible" or "Infeasible" only:
-"""
+    Is this chain-of-thought still logically feasible for solving the problem?
+    Answer "Feasible" or "Infeasible" only:
+    """
 
     response = ollama_generate(
         prompt=meta_prompt,
@@ -85,18 +77,13 @@ Answer "Feasible" or "Infeasible" only:
     print("Model's raw response:", repr(response))
     print("===================================\n")
 
-    # Make the response lower case, remove punctuation
     normalized = "".join(ch for ch in response.lower() if ch.isalpha())
 
-    # Check presence of 'feasible' or 'infeasible'
     if "feasible" in normalized and "infeasible" not in normalized:
         return True
     elif "infeasible" in normalized and "feasible" not in normalized:
         return False
     else:
-        # If the model's response is not strictly one or the other,
-        # we can default to feasible or treat it as infeasible.
-        # Let's default to "feasible" for now, to see expansions happen.
         print("WARNING: Model did not return strict 'Feasible'/'Infeasible'; defaulting to Feasible.\n")
         return True
 
@@ -133,9 +120,6 @@ def selection(node, c_param=1.4):
 
 
 def best_child(node, c_param):
-    """
-    Returns the child with the highest UCB score, or None if no children exist.
-    """
     if not node.children:
         return None
 
@@ -146,7 +130,6 @@ def best_child(node, c_param):
         f"\n[*] best_child: Node {id(node)} has {len(node.children)} children.")
     for idx, child in enumerate(node.children):
         q_value = child.get_value()
-        # Avoid division by zero
         visit_count = max(child.visit_count, 1)
         ucb_exploration = c_param * \
             math.sqrt(math.log(node.visit_count + 1) / visit_count)
@@ -158,7 +141,6 @@ def best_child(node, c_param):
             best_score = ucb_score
             best = child
 
-    # best could remain None if no children, but we handled that check above
     return best
 
 
@@ -213,7 +195,6 @@ def simulation(node, model_name, problem_statement):
     )
 
     while len(current_chain) < max_depth:
-        # Feasibility check each step
         if not feasibility_check(problem_statement, current_chain, model_name):
             return 0.0
 
@@ -246,10 +227,6 @@ def backpropagate(node, reward):
 
 
 def evaluate_chain(problem_statement, chain_of_thought, model_name="phi3"):
-    """
-    The final correctness check.
-    Returns 1.0 if the chain-of-thought is correct/complete for the problem, else 0.0.
-    """
     cot_text = "\n".join(chain_of_thought)
     arbiter_system_prompt = (
         "You are the arbiter. You must respond with exactly 'Yes' or 'No' only. "
@@ -257,14 +234,14 @@ def evaluate_chain(problem_statement, chain_of_thought, model_name="phi3"):
         "If the chain-of-thought is correct and complete, say 'Yes'. Otherwise say 'No'."
     )
     meta_prompt = f"""Problem Statement:
-{problem_statement}
+    {problem_statement}
 
-Chain of Thought:
-{cot_text}
+    Chain of Thought:
+    {cot_text}
 
-Are these reasoning steps correct, complete, and satisfactory for solving the problem?
-Answer "Yes" or "No" only:
-"""
+    Are these reasoning steps correct, complete, and satisfactory for solving the problem?
+    Answer "Yes" or "No" only:
+    """
     judgment = ollama_generate(
         prompt=meta_prompt,
         model_name=model_name,
@@ -277,11 +254,11 @@ Answer "Yes" or "No" only:
 
 
 def main():
+    # problem = """
+    # In how many different ways can five friends sit for a photograph of five chairs in a row?
+    # """
     problem = """
-    Given the word "BALLOON," which consists of the letters B, A, L, L, O, O, N, 
-    determine how many distinct 4-letter words can be formed. 
-    Each letter can be used as many times as it appears in "BALLOON." 
-    Words are sequences of letters where the order matters.
+    How many 'r' are there in the word strawberry?
     """
     root = Node(chain_of_thought=[])
 
