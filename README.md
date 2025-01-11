@@ -1,5 +1,8 @@
 # MCTS Chain-of-Thought Project
 
+![Flow Chart](https://media.licdn.com/dms/image/v2/D5622AQH4MMJhDH6jCw/feedshare-shrink_800/B56ZRV08B1GQAk-/0/1736606730950?e=1739404800&v=beta&t=ODX7E_EpZmYMFL8v8z6jWRjxtE9untvJnYGmkz9qecY)
+
+
 ## Table of Contents
 
 - [Overview](#overview)
