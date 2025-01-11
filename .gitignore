@@ -1,0 +1,81 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+db.sqlite3
+*.mo
+
+# Environment Variables
+.env
+*.env
+
+# Django migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Media
+media/
+staticfiles/
+
+# Node modules (if using npm/yarn)
+node_modules/
+
+# Compiled files
+*.so
+
+# Virtual environments
+venv/
+ENV/
+env/
+venv.bak/
+
+# macOS
+.DS_Store
+
+# JetBrains IDE
+.idea/
+
+# VSCode
+.vscode/
+
+# Docker
+*.log
+*.pid
+*.seed
+*.cover
+*.env
+**/Dockerfile
+**/docker-compose.yml
+*.swo
+*.swp
+
+# PyCharm
+*.iml
+.idea/
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Other files
+*.lock
