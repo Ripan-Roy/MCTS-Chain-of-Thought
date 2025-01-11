@@ -63,31 +63,30 @@ MCTS-Chain-of-Thought/
   └── prompts.py
 ```
 
-
 ### Description of Each Directory and File
 
 - **`README.md`**: Project overview and documentation.
 - **`requirements.txt`**: Python dependencies required for the project.
 - **`main.py`**: Entry point of the application.
 - **`config/`**: Configuration files.
-   - **`settings.py`**: Stores configuration variables like model names, system prompts, default parameters, etc.
+  - **`settings.py`**: Stores configuration variables like model names, system prompts, default parameters, etc.
 - **`clients/`**: Handles external client interactions.
-   - **`ollama_client.py`**: Encapsulates the Ollama client setup and the `ollama_generate` function.
+  - **`ollama_client.py`**: Encapsulates the Ollama client setup and the `ollama_generate` function.
 - **`models/`**: Contains data models.
-   - **`node.py`**: Defines the `Node` class used in MCTS.
+  - **`node.py`**: Defines the `Node` class used in MCTS.
 - **`mcts/`**: Implements the MCTS algorithm, broken down into core components.
-   - **`selection.py`**: Implements the selection strategy.
-   - **`expansion.py`**: Handles node expansion.
-   - **`simulation.py`**: Manages the simulation phase.
-   - **`backpropagation.py`**: Handles backpropagation of rewards.
-   - **`mcts_algorithm.py`**: Orchestrates the entire MCTS process using the above components.
-   - **`utils.py`**: Contains shared utility functions like `best_child`.
+  - **`selection.py`**: Implements the selection strategy.
+  - **`expansion.py`**: Handles node expansion.
+  - **`simulation.py`**: Manages the simulation phase.
+  - **`backpropagation.py`**: Handles backpropagation of rewards.
+  - **`mcts_algorithm.py`**: Orchestrates the entire MCTS process using the above components.
+  - **`utils.py`**: Contains shared utility functions like `best_child`.
 - **`evaluation/`**: Manages evaluation logic.
-   - **`evaluator.py`**: Contains functions like `feasibility_check` and `evaluate_chain`.
+  - **`evaluator.py`**: Contains functions like `feasibility_check` and `evaluate_chain`.
 - **`tests/`**: Contains unit tests and test cases.
-   - **`test.py`**: Test suite implementation.
+  - **`test.py`**: Test suite implementation.
 - **`utils/`**: Utility functions and helpers.
-   - **`prompts.py`**: Stores all prompt templates used in the application.
+  - **`prompts.py`**: Stores all prompt templates used in the application.
 
 ## Installation
 
@@ -97,7 +96,7 @@ Follow these steps to set up the project on your local machine.
 
 ```bash
 git clone https://github.com/Ripan-Roy/MCTS-Chain-of-Thought.git
-cd mcts_coh_project
+cd MCTS-Chain-of-Thought
 ```
 
 ### 2. **Create a Virtual Environment**
