@@ -17,7 +17,7 @@
 
 ## Overview
 
-The **MCTS Chain-of-Thought Project** leverages **Monte Carlo Tree Search (MCTS)** in combination with the **Ollama** language model to generate and evaluate logical reasoning steps, or "chains-of-thought," for solving complex problems. This project is designed to explore the synergy between MCTS algorithms and advanced language models to enhance problem-solving capabilities through iterative reasoning and evaluation.
+The **MCTS Chain-of-Thought Project** leverages **Monte Carlo Tree Search (MCTS)** in combination with a large language model to generate and evaluate logical reasoning steps, or "chains-of-thought," for solving complex problems. This project is designed to explore the synergy between MCTS algorithms and advanced language models to enhance problem-solving capabilities through iterative reasoning and evaluation.
 
 ## Features
 
@@ -36,16 +36,16 @@ MCTS-Chain-of-Thought/
 ├── requirements.txt
 ├── main.py
 ├── config/
-│ ├── **init**.py
+│ ├── __init__.py
 │ └── settings.py
 ├── clients/
-│ ├── **init**.py
+│ ├── __init__.py
 │ └── ollama_client.py
 ├── models/
-│ ├── **init**.py
+│ ├── __init__.py
 │ └── node.py
 ├── mcts/
-│ ├── **init**.py
+│ ├── __init__.py
 │ ├── selection.py
 │ ├── expansion.py
 │ ├── simulation.py
@@ -53,13 +53,13 @@ MCTS-Chain-of-Thought/
 │ ├── mcts_algorithm.py
 │ └── utils.py
 ├── evaluation/
-│ ├── **init**.py
+│ ├── __init__.py
 │ └── evaluator.py
 ├── tests/
-│ ├── **init**.py
+│ ├── __init__.py
 │ └── test.py
 └── utils/
-  ├── **init**.py
+  ├── __init__.py
   └── prompts.py
 ```
 
