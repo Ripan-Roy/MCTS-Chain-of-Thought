@@ -1,6 +1,6 @@
 # config/settings.py
 
-MODEL_NAME = "llama3.2"
+MODEL_NAME = "qwen:7b"
 
 ARBITER_SYSTEM_PROMPT_FEASIBILITY = (
     "You are the arbiter. You must respond with exactly 'Feasible' or 'Infeasible' only. "
